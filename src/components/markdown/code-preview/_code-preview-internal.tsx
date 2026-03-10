@@ -26,24 +26,15 @@ import {
 } from "@/components/registry-helpers/icon-placeholder"
 
 export type Demo =
-  | "action-button/basic"
-  | "action-button/default"
-  | "action-button/error"
-  | "action-button/require-are-you-sure"
-  | "loading-swap/basic"
-  | "loading-swap/large-component"
-  | "multi-select/basic"
-  | "multi-select/customize-badges"
-  | "multi-select/form"
-  | "multi-select/overflow-behavior"
-  | "multi-select/search-configuration"
-  | "multi-select/selection-mode"
-  | "number-input/basic"
-  | "number-input/input-group"
-  | "number-input/form"
-  | "password-input/basic"
-  | "password-input/form"
-  | "password-input/password-strength"
+  | "pixel-planet/asteroid"
+  | "pixel-planet/basic"
+  | "pixel-planet/dry"
+  | "pixel-planet/gas-giant-1"
+  | "pixel-planet/gas-giant-2"
+  | "pixel-planet/ice"
+  | "pixel-planet/lava"
+  | "pixel-planet/no-atmosphere"
+  | "pixel-planet/star"
 
 export function CodePreviewInternal({
   demo,
