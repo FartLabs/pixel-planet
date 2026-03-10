@@ -9,7 +9,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "registry:build": "shadcn build",
-    "prepare": "husky",
     "lint": "eslint --fix .",
     "format": "prettier --write ."
   },
@@ -79,7 +78,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.3.0",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",

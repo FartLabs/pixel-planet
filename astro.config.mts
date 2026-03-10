@@ -37,8 +37,18 @@ export default defineConfig({
     starlight({
       components: {
         Head: "./src/components/overrides/head.astro",
+        Footer: "./src/components/overrides/footer.astro",
       },
       head: [
+        // Add Fart.css
+        {
+          tag: "link",
+          attrs: {
+            rel: "stylesheet",
+            type: "text/css",
+            href: "https://css.fart.tools",
+          },
+        },
         // Add ICO favicon fallback for Safari.
         {
           tag: "link",
@@ -73,25 +83,14 @@ export default defineConfig({
         baseUrl: `${GITHUB_REPO_URL}/tree/main`,
       },
       logo: {
-        dark: "./src/assets/logo/dark.png",
-        light: "./src/assets/logo/light.png",
-        replacesTitle: true,
+        src: "./src/assets/logo/fartlabs.png",
+        replacesTitle: false,
       },
       social: [
         {
           icon: "github",
           label: "GitHub",
           href: GITHUB_REPO_URL,
-        },
-        {
-          icon: "youtube",
-          label: "YouTube",
-          href: "https://github.com/FartLabs",
-        },
-        {
-          icon: "x.com",
-          label: "X.com",
-          href: "https://github.com/FartLabs",
         },
       ],
       customCss: ["./src/styles/global.css"],
@@ -142,8 +141,6 @@ export default defineConfig({
               link: "/contributing",
             },
           ],
-          footerText:
-            "Built by [FartLabs](https://github.com/FartLabs) for use with [Shadcn](https://ui.shadcn.com)",
         }),
       ],
     }),
