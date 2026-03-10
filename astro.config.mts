@@ -19,10 +19,12 @@ const SERVER_URL =
 
 const serverUrlObject = new URL(SERVER_URL || "http://localhost:4321")
 
+const base = serverUrlObject.pathname !== "/" ? serverUrlObject.pathname : ""
+
 // https://astro.build/config
 export default defineConfig({
   site: serverUrlObject.origin,
-  base: serverUrlObject.pathname !== "/" ? serverUrlObject.pathname : undefined,
+  base: base || undefined,
   env: {
     schema: {
       GITHUB_REPO_URL: envField.string({ context: "client", access: "public" }),
@@ -58,7 +60,7 @@ export default defineConfig({
           tag: "link",
           attrs: {
             rel: "icon",
-            href: "/favicon.ico",
+            href: `${base}/favicon.ico`,
           },
         },
         // Add dark mode favicon.
@@ -66,7 +68,7 @@ export default defineConfig({
           tag: "link",
           attrs: {
             rel: "icon",
-            href: "/favicon-dark.svg",
+            href: `${base}/favicon-dark.svg`,
             media: "(prefers-color-scheme: dark)",
             type: "image/svg+xml",
           },
@@ -76,7 +78,7 @@ export default defineConfig({
           tag: "link",
           attrs: {
             rel: "icon",
-            href: "/favicon.svg",
+            href: `${base}/favicon.svg`,
             media: "(prefers-color-scheme: light)",
             type: "image/svg+xml",
           },
@@ -134,15 +136,15 @@ export default defineConfig({
           navLinks: [
             {
               label: "Docs",
-              link: "/getting-started/installation",
+              link: `${base}/getting-started/installation`,
             },
             {
               label: "Components",
-              link: "/components",
+              link: `${base}/components`,
             },
             {
               label: "Contributing",
-              link: "/contributing",
+              link: `${base}/contributing`,
             },
           ],
         }),
