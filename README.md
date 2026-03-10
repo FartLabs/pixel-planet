@@ -1,6 +1,6 @@
 # Pixel Planet
 
-A collection of accessible components built for use with Shadcn
+A collection of accessible components built for use with Shadcn.
 
 ## Documentation
 
@@ -28,3 +28,7 @@ For a detailed walkthrough of how this registry was built, check out the tutoria
 ## License
 
 Licensed under the [MIT license](/LICENSE).
+
+---
+
+Developed with 🧪 [**@FartLabs**](https://github.com/FartLabs)
