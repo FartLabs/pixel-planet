@@ -10,15 +10,15 @@ const ACTION_PACKAGE_MANAGER_MAP: Record<
   Record<PackageManager, string>
 > = {
   install: {
-    pnpm: `pnpm add`,
     npm: `npm install`,
+    pnpm: `pnpm add`,
     yarn: `yarn add`,
     bun: `bun add`,
     deno: `deno add`,
   },
   run: {
-    pnpm: `pnpm dlx`,
     npm: `npx`,
+    pnpm: `pnpm dlx`,
     yarn: `yarn`,
     bun: `bunx --bun`,
     deno: `deno x`,
