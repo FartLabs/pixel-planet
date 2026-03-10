@@ -19,7 +19,10 @@ const SERVER_URL =
 
 const serverUrlObject = new URL(SERVER_URL || "http://localhost:4321")
 
-const base = serverUrlObject.pathname !== "/" ? serverUrlObject.pathname : ""
+const base =
+  serverUrlObject.pathname !== "/"
+    ? serverUrlObject.pathname.replace(/\/$/, "")
+    : ""
 
 // https://astro.build/config
 export default defineConfig({
@@ -113,15 +116,15 @@ export default defineConfig({
           navLinks: [
             {
               label: "Docs",
-              link: `${base}/getting-started/installation`,
+              link: "/getting-started/installation",
             },
             {
               label: "Components",
-              link: `${base}/components`,
+              link: "/components",
             },
             {
               label: "Contributing",
-              link: `${base}/contributing`,
+              link: "/contributing",
             },
           ],
         }),
