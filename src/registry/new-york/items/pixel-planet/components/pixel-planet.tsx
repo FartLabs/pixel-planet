@@ -71,7 +71,7 @@ function PlanetContent({
   // Animation loop - update time and manual offset for texture scrolling
   useFrame(() => {
     if (!planet) return
-    
+
     timer.update()
 
     const manualRotation = options?.orbitControls ? rotationOffset : 0
@@ -208,7 +208,6 @@ export function PixelPlanet({
     <div ref={canvasRef} className={className} style={props.style}>
       <Canvas
         camera={{ position: [0, 0, 1] }}
-        gl={{ premultipliedAlpha: false, alpha: false }}
         style={{
           cursor: cursorStyle,
           touchAction: "none",

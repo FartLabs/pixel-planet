@@ -136,7 +136,7 @@ const fragmentShader = (): string => {
             float ring_a = step(0.28, ring);
 
             gl_FragColor = vec4(col.rgb, ring_a * col.a);
-
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }

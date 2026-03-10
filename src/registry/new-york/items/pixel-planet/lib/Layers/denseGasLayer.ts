@@ -113,7 +113,6 @@ const fragmentShader = (): string => {
             return coord + 0.5;
         }
         
-
         void main() {
             // pixelize uv
             vec2 uv = (floor(vUv.xy*pixels)/pixels) + 0.5;
@@ -164,7 +163,7 @@ const fragmentShader = (): string => {
             }
 
             gl_FragColor = vec4(col.rgb, a * col.a);
-
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }

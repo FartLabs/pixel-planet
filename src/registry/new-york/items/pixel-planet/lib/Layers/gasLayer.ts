@@ -139,6 +139,7 @@ const fragmentShader = (): string => {
                 col = shadow_outline_color;
             }
             gl_FragColor = vec4(col.rgb, step(cloud_cover, c) * a * col.a);
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }

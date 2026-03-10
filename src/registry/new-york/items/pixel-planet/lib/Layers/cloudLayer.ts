@@ -147,7 +147,7 @@ const fragmentShaderClouds = (): string => {
             
             c *= step(d_to_center, 0.5);
             gl_FragColor = vec4(col.rgb, step(cloud_cover, c) * a * col.a);
-
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }

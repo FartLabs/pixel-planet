@@ -42,7 +42,7 @@ const fragmentShader = (): string => {
             color = mix(color, vec4(0,0,0,0), smoothstep(step3, step4, dist));
         
             gl_FragColor = color;
-
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }

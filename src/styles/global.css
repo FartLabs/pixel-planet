@@ -242,7 +242,7 @@
   /* Specific icon/button/link centering */
   .social-links a,
   sl-theme-select button {
-    @apply !flex !items-center !justify-center !p-2 !rounded-full !aspect-square;
+    @apply !flex !aspect-square !items-center !justify-center !rounded-full !p-2;
     margin: 0 !important;
   }
 

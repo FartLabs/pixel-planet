@@ -83,8 +83,7 @@ const fragmentShaderLakes = (): string => {
             return sphere * 0.5+0.5;
         }
         
-        
-        void main() {
+                void main() {
             // pixelize uv
             vec2 uv = (floor(vUv.xy*pixels)/pixels) + 0.5;
             
@@ -110,7 +109,7 @@ const fragmentShaderLakes = (): string => {
             float a = step(lake_cutoff, lake);
             a *= step(distance(vec2(0.5), uv), 0.5);
             gl_FragColor = vec4(col.rgb, a * col.a);
-
+            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }
