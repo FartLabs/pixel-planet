@@ -4,146 +4,135 @@
   "homepage": "https://fartlabs.github.io/pixel-planet",
   "items": [
     {
-      "name": "loading-swap",
-      "description": "Swaps content with a loading spinner without layout shift.",
+      "name": "pixel-planet",
+      "description": "A collection of 3D pixel planets built with React Three Fiber.",
       "type": "registry:component",
+      "dependencies": ["three", "@react-three/fiber", "@react-three/drei"],
       "files": [
         {
-          "path": "src/registry/new-york/items/loading-swap/components/loading-swap.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "action-button",
-      "description": "A button that performs an action when clicked and optionally asks for user confirmation.",
-      "type": "registry:component",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "sonner",
-        "https://fartlabs.github.io/pixel-planet/r/loading-swap.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/new-york/items/action-button/components/action-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "number-input",
-      "description": "An input that returns a number value and automatically handles invalid inputs.",
-      "type": "registry:component",
-      "registryDependencies": ["input"],
-      "files": [
-        {
-          "path": "src/registry/new-york/items/number-input/components/number-input.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "multi-select",
-      "description": "A multi-select input that emulates the Shadcn Select component as closely as possible.",
-      "type": "registry:component",
-      "registryDependencies": ["popover", "command", "badge", "button"],
-      "files": [
-        {
-          "path": "src/registry/new-york/items/multi-select/components/multi-select.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "password-input",
-      "description": "An input that can toggle visibility of the password text and check the strength of the password.",
-      "type": "registry:component",
-      "registryDependencies": ["input", "button", "tooltip", "input-group"],
-      "dependencies": [
-        "@zxcvbn-ts/core",
-        "@zxcvbn-ts/language-common",
-        "@zxcvbn-ts/language-en"
-      ],
-      "files": [
-        {
-          "path": "src/registry/new-york/items/password-input/components/password-input.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-
-    {
-      "name": "loading-swap-experimental",
-      "description": "Swaps content with a loading spinner without layout shift. (Includes experimental support for all Shadcn icon libraries)",
-      "type": "registry:component",
-      "files": [
-        {
-          "path": "src/registry/experimental/items/loading-swap/components/loading-swap.tsx",
+          "path": "src/registry/new-york/items/pixel-planet/components/pixel-planet.tsx",
           "type": "registry:ui",
-          "target": "components/ui/loading-swap.tsx"
-        }
-      ]
-    },
-    {
-      "name": "action-button-experimental",
-      "description": "A button that performs an action when clicked and optionally asks for user confirmation. (Includes experimental support for all Shadcn icon libraries)",
-      "type": "registry:component",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "sonner",
-        "https://fartlabs.github.io/pixel-planet/r/loading-swap-experimental.json"
-      ],
-      "files": [
+          "target": "components/ui/pixel-planet.tsx"
+        },
         {
-          "path": "src/registry/experimental/items/action-button/components/action-button.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/action-button.tsx"
-        }
-      ]
-    },
-    {
-      "name": "number-input-experimental",
-      "description": "An input that returns a number value and automatically handles invalid inputs. (Includes experimental support for all Shadcn icon libraries)",
-      "type": "registry:component",
-      "registryDependencies": ["input"],
-      "files": [
+          "path": "src/registry/new-york/items/pixel-planet/lib/utils.ts",
+          "type": "registry:lib"
+        },
         {
-          "path": "src/registry/experimental/items/number-input/components/number-input.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/number-input.tsx"
-        }
-      ]
-    },
-    {
-      "name": "multi-select-experimental",
-      "description": "A multi-select input that emulates the Shadcn Select component as closely as possible. (Includes experimental support for all Shadcn icon libraries)",
-      "type": "registry:component",
-      "registryDependencies": ["popover", "command", "badge", "button"],
-      "files": [
+          "path": "src/registry/new-york/items/pixel-planet/lib/seed-utils.ts",
+          "type": "registry:lib"
+        },
         {
-          "path": "src/registry/experimental/items/multi-select/components/multi-select.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/multi-select.tsx"
-        }
-      ]
-    },
-    {
-      "name": "password-input-experimental",
-      "description": "An input that can toggle visibility of the password text and check the strength of the password. (Includes experimental support for all Shadcn icon libraries)",
-      "type": "registry:component",
-      "registryDependencies": ["input", "button", "tooltip", "input-group"],
-      "dependencies": [
-        "@zxcvbn-ts/core",
-        "@zxcvbn-ts/language-common",
-        "@zxcvbn-ts/language-en"
-      ],
-      "files": [
+          "path": "src/registry/new-york/items/pixel-planet/lib/Three.ts",
+          "type": "registry:lib"
+        },
         {
-          "path": "src/registry/experimental/items/password-input/components/password-input.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/password-input.tsx"
+          "path": "src/registry/new-york/items/pixel-planet/lib/camera.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/asteroid.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/dryPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/earthPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/gasGiant.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/gasGiantRing.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/icePlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/lavaPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/noAtmospherePlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/starPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/atmosphereLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/background.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/baseGasPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/basePlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/cloudLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/craterLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/denseGasLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/gasLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/highlightBorder.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/lakeLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/landMass.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/ringLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/riversLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/star.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/starBlobLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/starFlareLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/stars.ts",
+          "type": "registry:lib"
         }
       ]
     }

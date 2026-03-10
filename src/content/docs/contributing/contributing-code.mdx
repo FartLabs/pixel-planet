@@ -1,82 +1,69 @@
 ---
-title: Contributing Code
-description: Thanks for your interest in contributing to Pixel Planet Registry.
+title: Contribute code
+description: Learn how to set up the development environment and submit code changes.
 ---
 
 import { FileTree, Steps } from "@astrojs/starlight/components"
 
-Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
+We welcome code contributions to Pixel Planet. Review this document to understand the repository structure and development workflow before submitting a pull request.
 
-## About this repository
+### Repository structure
 
-This repository is an Astro Starlight project.
-
-- We use `npm` for development.
-- We use `prettier` for code formatting (which is automatically run on commit).
-
-## Structure
-
-This repository is structured as follows:
+Pixel Planet uses Astro and Starlight for documentation. The project structure organizes components and registry definitions logically:
 
 <FileTree>
 
 - src
-  - assets/
-  - components/
-  - content/docs
+  - assets/ # Logos and images
+  - components/ # Documentation site components
+  - content/docs # Documentation pages
     - components/
     - getting-started/
     - contributing/
-  - registry/new-york
-    - examples/
-    - items/
+  - registry/new-york # Component registry
+    - examples/ # Usage examples
+    - items/ # Component source code
 
 </FileTree>
 
-- `src/assets`: Any logos/images for the documentation site.
-- `src/components`: Components used to create the documentation site.
-- `src/content/docs/components`: Individual documentation pages for each component.
-- `src/content/getting-started`: One-off guides for the getting started section of the documentation.
-- `src/content/docs/contributing`: Documentation for contributing to the registry.
-- `src/registry/new-york/examples`: Example files used for rendering in the documentation pages for each component.
-- `src/registry/new-york/items`: The implementation of the component that will be installed in the user's project.
+### Local development
 
-## Development
+Follow these steps to set up the project on your local machine.
 
 <Steps>
 
-1. **[Fork the repository](https://github.com/FartLabs/pixel-planet/fork)**
-2. **Clone on your local machine**
+1. **Fork the repository**
+
+   [Fork the repository](https://github.com/FartLabs/pixel-planet/fork) to your GitHub account.
+
+2. **Clone the project**
+
+   Clone your fork to your local machine:
 
    ```bash
    git clone git@github.com:FartLabs/pixel-planet.git
    ```
 
-3. **Navigate to project directory**
+3. **Install dependencies**
+
+   Navigate to the project directory and install dependencies using `npm`:
 
    ```bash
    cd pixel-planet
+   npm install
    ```
 
-4. **Create a new Branch**
+4. **Configure environment**
 
-   ```bash
-   git checkout -b my-new-branch
-   ```
-
-5. **Install dependencies**
-
-   ```bash
-   npm i
-   ```
-
-6. **Copy `.env.example` to `.env`**
+   Copy the example environment file to create your local configuration:
 
    ```bash
    cp .env.example .env
    ```
 
-7. **Run the development server**
+5. **Start the development server**
+
+   Run the development server to view your changes in real-time:
 
    ```bash
    npm run dev
@@ -84,15 +71,15 @@ This repository is structured as follows:
 
 </Steps>
 
-## Building the registry locally
+### Test the registry
 
-To test that your registry builds correctly, you can run the following command:
+To verify that your component builds correctly in the registry, run the build command:
 
 ```bash
-npm registry:build
+npm run build
 ```
 
-Then try installing any component from the registry in a new project using the `shadcn add` command:
+You can test the installation of your component in a separate project using the local registry URL:
 
 ```bash
 npx shadcn@latest add http://localhost:4321/r/<component-name>.json

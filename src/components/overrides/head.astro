@@ -1,6 +1,4 @@
 ---
-import path from "node:path"
-
 const { head } = Astro.locals.starlightRoute
 
 // By default, Astro renders the default favicon before the media specific favicons which results in the media specific favicons not being used.
@@ -23,7 +21,7 @@ const sortedHead = head.map(h => {
 })
 
 const ogImageUrl = new URL(
-  path.join(Astro.url.pathname, "og.webp"),
+  `${import.meta.env.BASE_URL}og.png`,
   Astro.url,
 ).toString()
 

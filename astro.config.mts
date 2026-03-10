@@ -55,41 +55,22 @@ export default defineConfig({
             href: "https://css.fart.tools",
           },
         },
-        // Add ICO favicon fallback for Safari.
+        // Add PNG favicon
         {
           tag: "link",
           attrs: {
             rel: "icon",
-            href: `${base}/favicon.ico`,
-          },
-        },
-        // Add dark mode favicon.
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: `${base}/favicon-dark.svg`,
-            media: "(prefers-color-scheme: dark)",
-            type: "image/svg+xml",
-          },
-        },
-        // Add light mode favicon.
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: `${base}/favicon.svg`,
-            media: "(prefers-color-scheme: light)",
-            type: "image/svg+xml",
+            href: `${base}/favicon.png`,
+            type: "image/png",
           },
         },
       ],
-      title: "Pixel Planet Registry",
+      title: "Pixel Planet",
       editLink: {
         baseUrl: `${GITHUB_REPO_URL}/tree/main`,
       },
       logo: {
-        src: "./src/assets/logo/fartlabs.png",
+        src: "./src/assets/logo/pixel-planet.png",
         replacesTitle: false,
       },
       social: [
@@ -102,7 +83,7 @@ export default defineConfig({
       customCss: ["./src/styles/global.css"],
       sidebar: [
         {
-          label: "Getting Started",
+          label: "Getting started",
           items: [
             { label: "Introduction", slug: "getting-started/introduction" },
             { label: "Installation", slug: "getting-started/installation" },
@@ -117,15 +98,11 @@ export default defineConfig({
           items: [
             { label: "Introduction", slug: "contributing" },
             {
-              label: "Component Request",
-              slug: "contributing/component-request",
-            },
-            {
-              label: "Feature Request",
+              label: "Feature request",
               slug: "contributing/feature-request",
             },
             {
-              label: "Contributing Code",
+              label: "Contribute code",
               slug: "contributing/contributing-code",
             },
           ],

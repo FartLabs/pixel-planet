@@ -102,7 +102,7 @@ export function IconPlaceholder(
     }
     case "remixicon": {
       const Comp = ICON_MAP[iconLibrary][props.remixicon]
-      // eslint-disable-next-line react/no-children-prop
+
       return <Comp {...props} children={undefined} />
     }
     default:
