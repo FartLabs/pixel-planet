@@ -1,0 +1,29 @@
+---
+title: Loading Swap
+description: Swaps child content with a loading spinner without changing the element size.
+---
+
+import CodePreview from "@/components/markdown/code-preview/code-preview.astro"
+import Installation from "@/components/markdown/installation-tabs/installation-tabs.astro"
+
+<CodePreview demo="loading-swap/basic" />
+
+## Installation
+
+<Installation registryItem="loading-swap" />
+
+## Usage
+
+```tsx
+import { LoadingSwap } from "@/components/ui/loading-swap"
+```
+
+```tsx
+<LoadingSwap isLoading>Search</LoadingSwap>
+```
+
+## Examples
+
+### Large components
+
+<CodePreview demo="loading-swap/large-component" />
