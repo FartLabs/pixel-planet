@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "number-input",
   "description": "An input that returns a number value and automatically handles invalid inputs.",
-  "registryDependencies": ["input"],
+  "registryDependencies": [
+    "input"
+  ],
   "files": [
     {
       "path": "src/registry/new-york/items/number-input/components/number-input.tsx",

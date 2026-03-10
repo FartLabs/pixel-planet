@@ -8,18 +8,21 @@ import { loadEnv } from "vite"
 
 if (process.env.NODE_ENV == null) throw new Error("NODE_ENV is not set.")
 
-const { GITHUB_REPO_URL, DEPLOY_PRIME_URL, URL } = loadEnv(
+const { GITHUB_REPO_URL, DEPLOY_PRIME_URL, URL: ENV_URL } = loadEnv(
   process.env.NODE_ENV,
   process.cwd(),
   "",
 )
 
 const SERVER_URL =
-  process.env.NODE_ENV === "production" ? URL : DEPLOY_PRIME_URL
+  process.env.NODE_ENV === "production" ? ENV_URL : DEPLOY_PRIME_URL
+
+const serverUrlObject = new URL(SERVER_URL || "http://localhost:4321")
 
 // https://astro.build/config
 export default defineConfig({
-  site: SERVER_URL,
+  site: serverUrlObject.origin,
+  base: serverUrlObject.pathname !== "/" ? serverUrlObject.pathname : undefined,
   env: {
     schema: {
       GITHUB_REPO_URL: envField.string({ context: "client", access: "public" }),
