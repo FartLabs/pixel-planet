@@ -241,14 +241,19 @@
 
   /* Specific icon/button/link centering */
   .social-links a,
-  sl-theme-select,
-  sl-theme-select button,
-  .nav-bar a {
-    @apply !flex !h-full !items-center !justify-center !p-2;
+  sl-theme-select button {
+    @apply !flex !items-center !justify-center !p-2 !rounded-full !aspect-square;
+    margin: 0 !important;
+  }
+
+  sl-theme-select {
+    @apply !flex !items-center !justify-center;
     margin: 0 !important;
   }
 
   .nav-bar a {
+    @apply !flex !h-full !items-center !justify-center;
+    margin: 0 !important;
     padding: 0 1rem !important;
   }
 

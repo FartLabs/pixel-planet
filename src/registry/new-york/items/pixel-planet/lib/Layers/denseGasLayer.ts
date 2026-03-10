@@ -164,7 +164,7 @@ const fragmentShader = (): string => {
             }
 
             gl_FragColor = vec4(col.rgb, a * col.a);
-            if (gl_FragColor.a < 0.01) discard;
+
         }
     `
 }

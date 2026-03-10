@@ -119,7 +119,7 @@ const fragmentShaderDust = (): string => {
         
         
         gl_FragColor = vec4(col, a_dust);
-        if (gl_FragColor.a < 0.01) discard;
+
     }
     `
 }
@@ -251,7 +251,7 @@ const fragmentShaderNebula = (): string => {
                 col = background_color.rgb;
             }
             gl_FragColor = vec4(col, a2);
-            if (gl_FragColor.a < 0.01) discard;
+
         }
     `
 }

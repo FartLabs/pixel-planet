@@ -16,7 +16,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
-prior-art/
+pixel-planet-prior-art/
 
 # macOS-specific files
 .DS_Store

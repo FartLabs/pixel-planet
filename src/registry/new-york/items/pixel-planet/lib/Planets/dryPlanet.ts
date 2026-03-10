@@ -132,7 +132,7 @@ const fragmentShader = (): string => {
             vec4 col = texture(colors, vec2(posterize, 0.0));
             
             gl_FragColor = vec4(col.rgb, a * col.a);
-            if (gl_FragColor.a < 0.01) discard;
+
         }
     `
 }

@@ -144,7 +144,6 @@ const fragmentShaderPlanet = (): string => {
             }
             
             gl_FragColor = vec4(col.rgb, n_step * col.a);
-            if (gl_FragColor.a < 0.01) discard;
         }
     `
 }
@@ -172,7 +171,7 @@ export const createAsteroid = (options?: PlanetOptions): Group => {
     uniforms: {
       pixels: { value: 100.0 },
       color1: { value: colorPalette[0] },
-      size: { value: Math.random() * 8 + 2 },
+      size: { value: Math.random() * 10 },
       color2: { value: colorPalette[1] },
       color3: { value: colorPalette[2] },
       light_origin: { value: lightPos },

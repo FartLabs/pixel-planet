@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { generatePlanetByType, type PlanetOptions } from "../lib/utils"
+import { Timer } from "three"
 
 export interface PixelPlanetProps {
   type:
@@ -65,9 +66,13 @@ function PlanetContent({
     })
   }, [planet, seed])
 
+  const timer = useMemo(() => new Timer(), [])
+
   // Animation loop - update time and manual offset for texture scrolling
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (!planet) return
+    
+    timer.update()
 
     const manualRotation = options?.orbitControls ? rotationOffset : 0
 
@@ -75,7 +80,7 @@ function PlanetContent({
     planet.children.forEach((layer: any) => {
       if (layer.material && layer.material.uniforms) {
         if (layer.material.uniforms["time"]) {
-          layer.material.uniforms["time"].value = clock.getElapsedTime()
+          layer.material.uniforms["time"].value = timer.getElapsed()
         }
         if (layer.material.uniforms["manual_offset"]) {
           layer.material.uniforms["manual_offset"].value = manualRotation
@@ -203,6 +208,7 @@ export function PixelPlanet({
     <div ref={canvasRef} className={className} style={props.style}>
       <Canvas
         camera={{ position: [0, 0, 1] }}
+        gl={{ premultipliedAlpha: false, alpha: false }}
         style={{
           cursor: cursorStyle,
           touchAction: "none",

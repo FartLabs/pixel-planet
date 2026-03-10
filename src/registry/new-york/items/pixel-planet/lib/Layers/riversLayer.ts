@@ -112,7 +112,7 @@ const fragmentShaderRivers = (): string => {
             
             a *= step(river_cutoff, river_fbm);
             gl_FragColor = vec4(col.rgb, a * col.a);
-            if (gl_FragColor.a < 0.01) discard;
+
         }
     `
 }

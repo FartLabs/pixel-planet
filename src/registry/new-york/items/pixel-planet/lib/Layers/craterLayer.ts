@@ -96,7 +96,7 @@ const fragmentShaderCrater = (): string => {
             a*= step(d_circle, 0.5);
             
             gl_FragColor = vec4(col.rgb, a * col.a);
-            if (gl_FragColor.a < 0.01) discard;
+
         }
     `
 }
