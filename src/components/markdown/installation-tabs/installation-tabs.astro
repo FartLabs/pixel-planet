@@ -42,7 +42,7 @@ const registryDependencies = module.registryDependencies
       const name = dep.split("/").pop()?.split(".")[0]?.replace("-", " ")
       return {
         name,
-        href: `${import.meta.env.BASE_URL.replace(/\/$/, "")}/components/${name}`,
+        href: `/components/${name}`,
       }
     } else {
       // This is a shadcn/ui dependency.

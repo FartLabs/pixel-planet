@@ -4,30 +4,19 @@ import starlight from "@astrojs/starlight"
 import react from "@astrojs/react"
 import tailwindcss from "@tailwindcss/vite"
 import starlightThemeBlack from "starlight-theme-black"
-import { loadEnv } from "vite"
+import vercel from "@astrojs/vercel"
 
-if (process.env.NODE_ENV == null) throw new Error("NODE_ENV is not set.")
-
-const {
-  GITHUB_REPO_URL,
-  DEPLOY_PRIME_URL,
-  URL: ENV_URL,
-} = loadEnv(process.env.NODE_ENV, process.cwd(), "")
-
-const SERVER_URL =
-  process.env.NODE_ENV === "production" ? ENV_URL : DEPLOY_PRIME_URL
-
-const serverUrlObject = new URL(SERVER_URL || "http://localhost:4321")
-
-const base =
-  serverUrlObject.pathname !== "/"
-    ? serverUrlObject.pathname.replace(/\/$/, "")
-    : ""
+const GITHUB_REPO_URL = process.env.GITHUB_REPO_URL || "https://github.com/FartLabs/pixel-planet"
 
 // https://astro.build/config
 export default defineConfig({
-  site: serverUrlObject.origin,
-  base: base || undefined,
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
+  site: "https://pixel-planet-component.vercel.app",
+  base: "/",
   env: {
     schema: {
       GITHUB_REPO_URL: envField.string({ context: "client", access: "public" }),
@@ -63,7 +52,7 @@ export default defineConfig({
           tag: "link",
           attrs: {
             rel: "icon",
-            href: `${base}/favicon.png`,
+            href: "/favicon.png",
             type: "image/png",
           },
         },
@@ -116,15 +105,15 @@ export default defineConfig({
           navLinks: [
             {
               label: "Docs",
-              link: `${base}/getting-started/installation`,
+              link: "/getting-started/installation",
             },
             {
               label: "Components",
-              link: `${base}/components`,
+              link: "/components",
             },
             {
               label: "Contributing",
-              link: `${base}/contributing`,
+              link: "/contributing",
             },
           ],
         }),
