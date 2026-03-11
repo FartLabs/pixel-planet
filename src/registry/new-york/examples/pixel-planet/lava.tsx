@@ -1,9 +1,5 @@
-import { PixelPlanet } from "@/registry/new-york/items/pixel-planet/components/pixel-planet"
+import { PlanetDemoContainer } from "./demo-container"
 
 export default function PixelPlanetLavaDemo() {
-  return (
-    <div className="flex h-64 w-64 items-center justify-center">
-      <PixelPlanet type="lava" seed={42} className="h-full w-full" />
-    </div>
-  )
+  return <PlanetDemoContainer type="lava" initialSeed={42} />
 }
