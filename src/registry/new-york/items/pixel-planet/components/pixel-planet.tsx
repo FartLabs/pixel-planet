@@ -26,6 +26,7 @@ export interface PixelPlanetProps {
   className?: string
   stars?: boolean
   orbitControls?: boolean
+  orbitControlsSensitivity?: number
 }
 
 const mapTypeToLabel: Record<PixelPlanetProps["type"], string> = {
@@ -94,6 +95,7 @@ export function PixelPlanet({
   className,
   stars,
   orbitControls = false,
+  orbitControlsSensitivity = -0.005,
   ...props
 }: PixelPlanetProps & React.ComponentProps<typeof Canvas>) {
   const [isDragging, setIsDragging] = useState(false)
@@ -105,7 +107,7 @@ export function PixelPlanet({
   const lastDragXRef = useRef<number>(0)
 
   const orbitControlsEnabled = orbitControls
-  const sensitivity = -0.005 // Conversion factor from pixels to radians (negative for inverse direction)
+  const sensitivity = orbitControlsSensitivity // Conversion factor from pixels to radians (negative for inverse direction)
   const friction = 0.95 // Friction coefficient (lower = more friction)
 
   // Apply velocity and friction when not dragging
