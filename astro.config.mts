@@ -116,15 +116,15 @@ export default defineConfig({
           navLinks: [
             {
               label: "Docs",
-              link: "/getting-started/installation",
+              link: `${base}/getting-started/installation`,
             },
             {
               label: "Components",
-              link: "/components",
+              link: `${base}/components`,
             },
             {
               label: "Contributing",
-              link: "/contributing",
+              link: `${base}/contributing`,
             },
           ],
         }),

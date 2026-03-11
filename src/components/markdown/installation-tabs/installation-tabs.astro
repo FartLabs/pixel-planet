@@ -6,7 +6,6 @@ import type {
   RegistryFileType,
   RegistryItemSchema,
 } from "@/types/shadcn-registry"
-import { SERVER_URL } from "@/data/env"
 import { ManualInstallCodeCard } from "@/components/manual-install-code-card"
 
 type RegistryItem =
@@ -43,7 +42,7 @@ const registryDependencies = module.registryDependencies
       const name = dep.split("/").pop()?.split(".")[0]?.replace("-", " ")
       return {
         name,
-        href: `${SERVER_URL}/components/${name}`,
+        href: `${import.meta.env.BASE_URL.replace(/\/$/, "")}/components/${name}`,
       }
     } else {
       // This is a shadcn/ui dependency.
