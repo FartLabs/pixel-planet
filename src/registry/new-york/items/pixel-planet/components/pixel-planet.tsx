@@ -45,7 +45,6 @@ function PlanetContent({
   seed,
   advanced: options,
   rotationOffset = 0,
-  orbitControls,
 }: PixelPlanetProps & { rotationOffset?: number }) {
   const planetLabel = mapTypeToLabel[type]
 
@@ -63,7 +62,6 @@ function PlanetContent({
         if (layer.material.uniforms["seed"]) {
           layer.material.uniforms["seed"].value = seed
         }
-        // Assuming asteroid sizing logic from index.js if needed, strictly following seed for now
       }
     })
   }, [planet, seed])
@@ -76,16 +74,12 @@ function PlanetContent({
 
     timer.update()
 
-    const manualRotation = orbitControls ? rotationOffset : 0
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     planet.children.forEach((layer: any) => {
       if (layer.material && layer.material.uniforms) {
         if (layer.material.uniforms["time"]) {
-          layer.material.uniforms["time"].value = timer.getElapsed()
-        }
-        if (layer.material.uniforms["manual_offset"]) {
-          layer.material.uniforms["manual_offset"].value = manualRotation
+          layer.material.uniforms["time"].value =
+            timer.getElapsed() + rotationOffset
         }
       }
     })
@@ -168,7 +162,8 @@ export function PixelPlanet({
     const deltaTime = currentTime - lastDragTimeRef.current
 
     // Update rotation
-    setRotationOffset(rotationAtDragStartRef.current + deltaX * sensitivity)
+    const newOffset = rotationAtDragStartRef.current + deltaX * sensitivity
+    setRotationOffset(newOffset)
 
     // Calculate velocity based on movement since last frame
     if (deltaTime > 0) {
@@ -236,11 +231,7 @@ export function PixelPlanet({
           />
         )}
 
-        <PlanetContent
-          {...props}
-          rotationOffset={rotationOffset}
-          orbitControls={orbitControls}
-        />
+        <PlanetContent {...props} rotationOffset={rotationOffset} />
 
         {/* <OrbitControls enablePan={false} /> */}
       </Canvas>

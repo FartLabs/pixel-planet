@@ -1,7 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { PixelPlanet, type PixelPlanetProps } from "@/registry/new-york/items/pixel-planet/components/pixel-planet"
+import {
+  PixelPlanet,
+  type PixelPlanetProps,
+} from "@/registry/new-york/items/pixel-planet/components/pixel-planet"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -12,14 +15,17 @@ interface PlanetDemoContainerProps {
   initialSeed?: number
 }
 
-export function PlanetDemoContainer({ type, initialSeed = 123 }: PlanetDemoContainerProps) {
+export function PlanetDemoContainer({
+  type,
+  initialSeed = 123,
+}: PlanetDemoContainerProps) {
   const [orbitControls, setOrbitControls] = useState(true)
   const [seed, setSeed] = useState(initialSeed)
 
   const randomizeSeed = () => setSeed(Math.floor(Math.random() * 1000))
 
   return (
-    <div className="flex flex-col items-center gap-8 p-4 w-full">
+    <div className="flex w-full flex-col items-center gap-8 p-4">
       <div className="flex h-64 w-64 items-center justify-center">
         <PixelPlanet
           type={type}
