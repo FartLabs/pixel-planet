@@ -94,8 +94,8 @@ function PlanetContent({
 export function PixelPlanet({
   className,
   stars,
-  orbitControls = false,
-  orbitControlsSensitivity = -0.005,
+  orbitControls,
+  orbitControlsSensitivity,
   ...props
 }: PixelPlanetProps & React.ComponentProps<typeof Canvas>) {
   const [isDragging, setIsDragging] = useState(false)
@@ -106,8 +106,8 @@ export function PixelPlanet({
   const lastDragTimeRef = useRef<number>(0)
   const lastDragXRef = useRef<number>(0)
 
-  const orbitControlsEnabled = orbitControls
-  const sensitivity = orbitControlsSensitivity // Conversion factor from pixels to radians (negative for inverse direction)
+  const orbitControlsEnabled = orbitControls ?? orbitControlsSensitivity !== undefined
+  const sensitivity = orbitControlsSensitivity ?? -0.005 // Default sensitivity
   const friction = 0.95 // Friction coefficient (lower = more friction)
 
   // Apply velocity and friction when not dragging
