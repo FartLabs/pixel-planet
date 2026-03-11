@@ -17,7 +17,7 @@ The most reliable way to install a component from a custom third-party registry 
 Run the following command in your terminal:
 
 ```bash
-npx shadcn@latest add https://pixel-planet-component.vercel.app/r/pixel-planet.json
+npx shadcn@latest add https://pixel-planet.fartlabs.org/r/pixel-planet.json
 ```
 
 _This commands the CLI to fetch the component's code and dependencies directly from the repository's build output folder (\`/r\`)._
@@ -42,12 +42,13 @@ export default function Page() {
 
 The component accepts the following properties for customization:
 
-| Property    | Type               | Default     | Description                                                   |
-| :---------- | :----------------- | :---------- | :------------------------------------------------------------ |
-| `type`      | `PlanetType`       | `"earth"`   | The celestial body type (e.g., `earth`, `lava`, `gas-giant`). |
-| `seed`      | `string \| number` | `123`       | Seed for randomized surface patterns.                         |
-| `animate`   | `boolean`          | `true`      | Enables or disables the rotation animation.                   |
-| `className` | `string`           | `undefined` | Additional CSS classes for the container.                     |
+| Property        | Type               | Default     | Description                                                   |
+| :-------------- | :----------------- | :---------- | :------------------------------------------------------------ |
+| `type`          | `PlanetType`       | `"earth"`   | The celestial body type (e.g., `earth`, `lava`, `gas-giant`). |
+| `seed`          | `string \| number` | `123`       | Seed for randomized surface patterns.                         |
+| `animate`       | `boolean`          | `true`      | Enables or disables the rotation animation.                   |
+| `orbitControls` | `boolean`          | `false`     | Enables drag-to-rotate interaction.                           |
+| `className`     | `string`           | `undefined` | Additional CSS classes for the container.                     |
 
 ### Celestial body types
 

@@ -6,7 +6,8 @@ import tailwindcss from "@tailwindcss/vite"
 import starlightThemeBlack from "starlight-theme-black"
 import vercel from "@astrojs/vercel"
 
-const GITHUB_REPO_URL = process.env.GITHUB_REPO_URL || "https://github.com/FartLabs/pixel-planet"
+const GITHUB_REPO_URL =
+  process.env.GITHUB_REPO_URL || "https://github.com/FartLabs/pixel-planet"
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  site: "https://pixel-planet-component.vercel.app",
+  site: "https://pixel-planet.fartlabs.org",
   base: "/",
   env: {
     schema: {

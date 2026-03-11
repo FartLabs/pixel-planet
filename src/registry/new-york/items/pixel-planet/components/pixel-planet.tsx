@@ -25,6 +25,7 @@ export interface PixelPlanetProps {
   advanced?: PlanetOptions
   className?: string
   stars?: boolean
+  orbitControls?: boolean
 }
 
 const mapTypeToLabel: Record<PixelPlanetProps["type"], string> = {
@@ -44,6 +45,7 @@ function PlanetContent({
   seed,
   advanced: options,
   rotationOffset = 0,
+  orbitControls,
 }: PixelPlanetProps & { rotationOffset?: number }) {
   const planetLabel = mapTypeToLabel[type]
 
@@ -74,7 +76,7 @@ function PlanetContent({
 
     timer.update()
 
-    const manualRotation = options?.orbitControls ? rotationOffset : 0
+    const manualRotation = orbitControls ? rotationOffset : 0
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     planet.children.forEach((layer: any) => {
@@ -97,6 +99,7 @@ function PlanetContent({
 export function PixelPlanet({
   className,
   stars,
+  orbitControls = false,
   ...props
 }: PixelPlanetProps & React.ComponentProps<typeof Canvas>) {
   const [isDragging, setIsDragging] = useState(false)
@@ -107,7 +110,7 @@ export function PixelPlanet({
   const lastDragTimeRef = useRef<number>(0)
   const lastDragXRef = useRef<number>(0)
 
-  const orbitControlsEnabled = props.advanced?.orbitControls ?? false
+  const orbitControlsEnabled = orbitControls
   const sensitivity = -0.005 // Conversion factor from pixels to radians (negative for inverse direction)
   const friction = 0.95 // Friction coefficient (lower = more friction)
 
@@ -233,7 +236,11 @@ export function PixelPlanet({
           />
         )}
 
-        <PlanetContent {...props} rotationOffset={rotationOffset} />
+        <PlanetContent
+          {...props}
+          rotationOffset={rotationOffset}
+          orbitControls={orbitControls}
+        />
 
         {/* <OrbitControls enablePan={false} /> */}
       </Canvas>
