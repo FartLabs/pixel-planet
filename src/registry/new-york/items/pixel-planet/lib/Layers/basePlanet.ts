@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { BasePlanetLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -118,13 +119,15 @@ const fragmentShaderPlanet = (): string => {
     `
 }
 
-export function createBasePlanet(
-  lightPos = new Vector2(0.39, 0.7),
-  lightIntensity = 0.1,
-  colors: Vector4[] | null = null,
-  rotationSpeed = 0.1,
-  rotation = 0.0,
-): Mesh {
+export function createBasePlanet(options: BasePlanetLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    lightIntensity = 0.1,
+    colors = null,
+    rotationSpeed = 0.1,
+    rotation = 0.0,
+    manualOffset = 0.0,
+  } = options
   const colorPalette = colors
     ? colors
     : [
@@ -145,7 +148,7 @@ export function createBasePlanet(
       rotation: { value: rotation },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
-      manual_offset: { value: 0.0 },
+      manual_offset: { value: manualOffset },
     },
     vertexShader: vertexShader(),
     fragmentShader: fragmentShaderPlanet(),

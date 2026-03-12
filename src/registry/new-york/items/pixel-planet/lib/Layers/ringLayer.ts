@@ -7,6 +7,7 @@ import {
   Vector2,
 } from "three"
 import { flip } from "../utils"
+import type { RingLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -141,13 +142,15 @@ const fragmentShader = (): string => {
     `
 }
 
-export function createRingLayer(
-  lightPos = new Vector2(0.39, 0.7),
-  rotationSpeed = 0.1,
-  ringWidth = 0.143,
-  perspective = 6.0,
-  scalePlanet = 4.0,
-): Mesh {
+export function createRingLayer(options: RingLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    rotationSpeed = 0.1,
+    ringWidth = 0.143,
+    perspective = 6.0,
+    scalePlanet = 4.0,
+    rotation = 0.0,
+  } = options
   const colorSchemeTexture1 = new TextureLoader().load(
     "/pixel-planet/colorScheme/colorScheme1.png",
   )
@@ -171,7 +174,7 @@ export function createRingLayer(
       pixels: { value: 250.0 },
       light_origin: { value: lightPos },
       time_speed: { value: rotationSpeed },
-      rotation: { value: Math.random() },
+      rotation: { value: rotation },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
     },

@@ -1,14 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import {
   PixelPlanet,
   type PixelPlanetProps,
 } from "@/registry/new-york/items/pixel-planet/components/pixel-planet"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { RotateCcw } from "lucide-react"
+import { type PlanetOptions } from "@/registry/new-york/items/pixel-planet/lib/utils"
+import { PlanetGui } from "./planet-gui"
 
 interface PlanetDemoContainerProps {
   type: PixelPlanetProps["type"]
@@ -19,49 +17,36 @@ export function PlanetDemoContainer({
   type,
   initialSeed = 123,
 }: PlanetDemoContainerProps) {
-  const [orbitControls, setOrbitControls] = useState(true)
   const [seed, setSeed] = useState(initialSeed)
-
-  const randomizeSeed = () => setSeed(Math.floor(Math.random() * 1000))
+  const [options, setOptions] = useState<PlanetOptions>({
+    orbitControls: true,
+  })
+  const guiContainerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div className="flex w-full flex-col items-center gap-8 p-4">
-      <div className="flex h-64 w-64 items-center justify-center">
+    <div className="relative flex min-h-[400px] w-full flex-col items-center gap-8 p-4">
+      <div className="flex h-80 w-80 items-center justify-center">
         <PixelPlanet
           type={type}
           seed={seed}
           className="h-full w-full"
-          orbitControls={orbitControls}
+          orbitControls={options.orbitControls}
+          orbitControlsSensitivity={options.orbitControlsSensitivity}
+          advanced={options}
         />
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-6 rounded-xl border bg-card p-4 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Switch
-            id={`orbit-controls-${type}`}
-            checked={orbitControls}
-            onCheckedChange={setOrbitControls}
-          />
-          <Label htmlFor={`orbit-controls-${type}`} className="cursor-pointer">
-            Orbit Controls
-          </Label>
-        </div>
+      {/* GUI Container */}
+      <div ref={guiContainerRef} className="absolute top-4 right-4 z-10" />
 
-        <div className="flex items-center gap-2 border-l pl-6">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={randomizeSeed}
-            className="h-8 gap-2"
-          >
-            <RotateCcw className="h-3.5 w-3.5" />
-            Randomize Seed
-          </Button>
-          <span className="text-xs text-muted-foreground tabular-nums">
-            Seed: {seed}
-          </span>
-        </div>
-      </div>
+      <PlanetGui
+        type={type}
+        seed={seed}
+        onSeedChange={setSeed}
+        options={options}
+        onOptionsChange={setOptions}
+        containerRef={guiContainerRef}
+      />
     </div>
   )
 }

@@ -21,22 +21,20 @@ export const createGasGiant = (options?: PlanetOptions): Group => {
     ? options.colors.clouds.map(c => new Vector4(c[0], c[1], c[2], c[3]))
     : undefined
 
-  const basePlanet = createBaseGasPlanet(
+  const basePlanet = createBaseGasPlanet({
     lightPos,
-    options?.cloudCover,
-    baseColors,
-    undefined,
+    cloudCover: options?.cloudCover,
+    colors: baseColors,
     rotationSpeed,
     rotation,
-  )
-  const gasLayer = createGasPLayer(
+  })
+  const gasLayer = createGasPLayer({
     lightPos,
-    options?.cloudCover,
-    cloudColors,
-    undefined,
+    cloudCover: options?.cloudCover,
+    colors: cloudColors,
     rotationSpeed,
     rotation,
-  )
+  })
   gasLayer.position.z = 0.01
   gasGiantGroup.add(basePlanet)
   gasGiantGroup.add(gasLayer)

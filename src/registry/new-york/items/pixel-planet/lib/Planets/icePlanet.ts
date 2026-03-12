@@ -30,27 +30,26 @@ export const createIcePlanet = (options?: PlanetOptions): Group => {
     ? options.colors.clouds.map(c => new Vector4(c[0], c[1], c[2], c[3]))
     : undefined
 
-  const basePlanet = createBasePlanet(
+  const basePlanet = createBasePlanet({
     lightPos,
-    undefined,
-    baseColors,
+    colors: baseColors,
     rotationSpeed,
     rotation,
-  )
-  const lakeLayer = createLakeLayer(
+  })
+  const lakeLayer = createLakeLayer({
     lightPos,
     rotationSpeed,
-    options?.waterLevel,
-    lakeColors,
+    waterLevel: options?.waterLevel,
+    colors: lakeColors,
     rotation,
-  )
-  const cloudLayer = createCloudLayer(
-    cloudColors,
+  })
+  const cloudLayer = createCloudLayer({
+    colors: cloudColors,
     lightPos,
     rotationSpeed,
     rotation,
-    options?.cloudCover,
-  )
+    cloudCover: options?.cloudCover,
+  })
   icePlanet.add(basePlanet)
   icePlanet.add(lakeLayer)
   icePlanet.add(cloudLayer)

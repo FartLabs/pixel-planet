@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector4 } from "three"
 import { flip } from "../utils"
+import type { StarBlobLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -123,10 +124,8 @@ const fragmentShader = (): string => {
     `
 }
 
-export function createStarBlobLayer(
-  rotationSpeed = 0.1,
-  blobColor: Vector4 | null = null,
-): Mesh {
+export function createStarBlobLayer(options: StarBlobLayerOptions = {}): Mesh {
+  const { rotationSpeed = 0.1, blobColor = null, rotation = 0.0 } = options
   const color = blobColor
     ? blobColor
     : new Vector4(255 / 255, 165 / 255, 0 / 255, 1)
@@ -137,7 +136,7 @@ export function createStarBlobLayer(
       pixels: { value: 200.0 },
       color: { value: color },
       time_speed: { value: rotationSpeed },
-      rotation: { value: Math.random() },
+      rotation: { value: rotation },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
       circle_amount: { value: 3.0 },

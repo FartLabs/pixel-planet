@@ -6,6 +6,7 @@ import {
   TextureLoader,
 } from "three"
 import { flip } from "../utils"
+import type { StarFlareLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -160,11 +161,15 @@ const fragmentShader = (): string => {
 }
 
 export function createStarFlareLayer(
-  rotationSpeed = 0.05,
-  stormWidth = 0.2,
-  stormDitherWidth = 0.07,
-  color: string | null = null,
+  options: StarFlareLayerOptions = {},
 ): Mesh {
+  const {
+    rotationSpeed = 0.05,
+    stormWidth = 0.2,
+    stormDitherWidth = 0.07,
+    color = null,
+    rotation = 0.0,
+  } = options
   const palette = color
     ? `/pixel-planet/colorScheme/starPalette/${color}Palette.png`
     : "/pixel-planet/colorScheme/starPalette/orangePalette.png"
@@ -178,7 +183,7 @@ export function createStarFlareLayer(
       pixels: { value: 200.0 },
       colorramp: { value: colorSchemeTexture },
       time_speed: { value: rotationSpeed },
-      rotation: { value: Math.random() },
+      rotation: { value: rotation },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
       storm_width: { value: stormWidth },

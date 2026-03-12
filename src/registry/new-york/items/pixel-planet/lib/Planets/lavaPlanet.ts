@@ -38,26 +38,25 @@ export const createLavaPlanet = (options?: PlanetOptions): Group => {
 
   const planetGroup = createGroup()
 
-  const basePlanet = createBasePlanet(
+  const basePlanet = createBasePlanet({
     lightPos,
-    undefined,
-    baseColors,
+    colors: baseColors,
     rotationSpeed,
     rotation,
-  )
-  const craterLayer = createCraterLayer(
-    lightPos,
-    craterColors,
-    rotationSpeed,
-    rotation,
-  )
-  const riverLayer = createRiverLayer(
+  })
+  const craterLayer = createCraterLayer({
     lightPos,
     rotationSpeed,
-    options?.waterLevel,
-    riverColors,
+    colors: craterColors,
     rotation,
-  )
+  })
+  const riverLayer = createRiverLayer({
+    lightPos,
+    rotationSpeed,
+    rivers: options?.waterLevel,
+    colors: riverColors,
+    rotation,
+  })
   planetGroup.add(basePlanet)
   planetGroup.add(craterLayer)
   planetGroup.add(riverLayer)

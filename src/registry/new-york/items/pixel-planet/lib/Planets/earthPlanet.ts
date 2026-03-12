@@ -27,28 +27,25 @@ export const createEarthPlanet = (options?: PlanetOptions): Group => {
     ? options.colors.clouds.map(c => new Vector4(c[0], c[1], c[2], c[3]))
     : undefined
 
-  const basePlanet = createBasePlanet(
+  const basePlanet = createBasePlanet({
     lightPos,
-    undefined,
-    baseColors,
+    colors: baseColors,
     rotationSpeed,
     rotation,
-  )
-  const landmass = createlandMassLayer(
-    lightPos,
-    undefined,
-    undefined, // land colors?? we could map them, but for now undefined
-    rotationSpeed,
-    rotation,
-    0.5,
-  )
-  const clouds = createCloudLayer(
-    cloudColors,
+  })
+  const landmass = createlandMassLayer({
     lightPos,
     rotationSpeed,
     rotation,
-    options?.cloudCover,
-  )
+    land: 0.5,
+  })
+  const clouds = createCloudLayer({
+    colors: cloudColors,
+    lightPos,
+    rotationSpeed,
+    rotation,
+    cloudCover: options?.cloudCover,
+  })
   const atmosphere = createAtmosphereLayer()
 
   earth.add(basePlanet, landmass, clouds, atmosphere)

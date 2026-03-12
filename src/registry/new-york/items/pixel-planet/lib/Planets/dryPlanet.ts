@@ -138,39 +138,25 @@ const fragmentShader = (): string => {
 }
 
 import { type PlanetOptions } from "../utils"
+import { createBasePlanet } from "../Layers/basePlanet"
 
 export function createDryPlanet(options?: PlanetOptions): Group {
   const lightPos = options?.lightPosition
     ? new Vector2(options.lightPosition[0], options.lightPosition[1])
     : new Vector2(0.39, 0.7)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const colors = options?.colors?.base
-    ? options.colors.base.map(c => new Vector4(c[0], c[1], c[2], c[3]))
+    ? options.colors.base.map((c: any) => new Vector4(c[0], c[1], c[2], c[3]))
     : null
   const rotation = options?.rotation ?? 0.0
   const rotationSpeed = options?.rotationSpeed ?? 0.1
-  const colorSchemeTexture1 = new TextureLoader().load(
-    "/pixel-planet/colorScheme/colorScheme2.png",
-  )
-  colorSchemeTexture1.magFilter = NearestFilter
-  colorSchemeTexture1.minFilter = NearestFilter
 
-  const planetGeometry = new PlaneGeometry(1, 1)
-  const planetMaterial = new ShaderMaterial({
-    uniforms: {
-      pixels: { value: 100.0 },
-      colors: { value: colorSchemeTexture1 },
-      light_origin: { value: lightPos },
-      time_speed: { value: rotationSpeed },
-      rotation: { value: rotation },
-      seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
-      time: { value: 0.0 },
-    },
-    vertexShader: vertexShader(),
-    fragmentShader: fragmentShader(),
-    transparent: true,
+  const basePlanet = createBasePlanet({
+    lightPos,
+    colors,
+    rotation,
+    rotationSpeed,
   })
 
-  const basePlanet = new Mesh(planetGeometry, planetMaterial)
   return new Group().add(basePlanet)
 }

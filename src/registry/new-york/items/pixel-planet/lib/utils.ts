@@ -35,6 +35,7 @@ export interface PlanetOptions {
   pixelSize?: number
   waterLevel?: number // for lakes/rivers
   cloudCover?: number
+  cameraDistance?: number // for manual zoom control
   orbitControls?: boolean // Enable drag-to-rotate interaction
   orbitControlsSensitivity?: number // Custom sensitivity for drag-to-rotate
   colors?: {

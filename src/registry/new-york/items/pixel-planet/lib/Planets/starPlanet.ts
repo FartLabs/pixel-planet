@@ -14,19 +14,19 @@ export const createStarPlanet = (options?: PlanetOptions): Group => {
   const rotation = options?.rotation ?? 0.0
   const rotationSpeed = options?.rotationSpeed
 
-  const basePlanet = createStar(
+  const basePlanet = createStar({
     lightPos,
-    undefined,
     rotationSpeed,
     rotation,
-    undefined, // color string logic is complex, skipping for now
-  )
-  const starFlareLayer = createStarFlareLayer(rotationSpeed)
-  const blobLayer = createStarBlobLayer(
+  })
+  const starFlareLayer = createStarFlareLayer({
     rotationSpeed,
-    // No easy color mapping for blob unless we define one
-    undefined,
-  )
+    rotation: options?.rotation,
+  })
+  const blobLayer = createStarBlobLayer({
+    rotationSpeed,
+    rotation: options?.rotation,
+  })
 
   starFlareLayer.position.z = 0.01
   starFlareLayer.scale.set(1.2, 1.2, 1.0)

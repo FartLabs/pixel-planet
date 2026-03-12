@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { LandMassLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -141,14 +142,16 @@ const fragmentShaderPlanet = (): string => {
     `
 }
 
-export function createlandMassLayer(
-  lightPos = new Vector2(0.39, 0.7),
-  lightIntensity = 0.1,
-  colors: Vector4[] | null = null,
-  rotationSpeed = 0.1,
-  rotation = 0.0,
-  land = 0.6,
-): Mesh {
+export function createlandMassLayer(options: LandMassLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    lightIntensity = 0.1,
+    colors = null,
+    rotationSpeed = 0.1,
+    rotation = 0.0,
+    land = 0.6,
+    manualOffset = 0.0,
+  } = options
   const colorPalette = colors
     ? colors
     : [
@@ -169,7 +172,7 @@ export function createlandMassLayer(
       lightIntensity: { value: lightIntensity },
       light_origin: { value: lightPos },
       time_speed: { value: rotationSpeed },
-      manual_offset: { value: 0.0 },
+      manual_offset: { value: manualOffset },
       rotation: { value: rotation },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },

@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { GasLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -144,15 +145,16 @@ const fragmentShader = (): string => {
     `
 }
 
-export function createGasPLayer(
-  lightPos = new Vector2(0.39, 0.7),
-  cloudCover = 0.538,
-  colors?: Vector4[],
-  stretch = 1.0,
-  rotationSpeed = 0.1,
-  rotation = 0.0,
-  cloudCurve = 1.3,
-): Mesh {
+export function createGasPLayer(options: GasLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    cloudCover = 0.538,
+    colors = null,
+    stretch = 2.0,
+    rotationSpeed = 0.1,
+    rotation = 0.0,
+    cloudCurve = 1.3,
+  } = options
   const colorPalette = colors
     ? colors
     : [

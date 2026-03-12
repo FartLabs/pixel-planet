@@ -7,6 +7,7 @@ import {
   Vector2,
 } from "three"
 import { flip } from "../utils"
+import type { StarLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -133,13 +134,14 @@ const fragmentShaderPlanet = (): string => {
     `
 }
 
-export function createStar(
-  lightPos = new Vector2(0.39, 0.7),
-  lightIntensity = 0.1,
-  rotationSpeed = 0.01,
-  rotation = 0.0,
-  color: string | null = null,
-): Mesh {
+export function createStar(options: StarLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    lightIntensity = 0.1,
+    rotationSpeed = 0.01,
+    rotation = 0.0,
+    color = null,
+  } = options
   const palette = color
     ? `/pixel-planet/colorScheme/starPalette/${color}Palette.png`
     : "/pixel-planet/colorScheme/starPalette/orangePalette.png"

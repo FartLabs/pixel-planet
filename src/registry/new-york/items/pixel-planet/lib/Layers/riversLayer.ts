@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { RiverLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -117,13 +118,14 @@ const fragmentShaderRivers = (): string => {
     `
 }
 
-export function createRiverLayer(
-  lightPos = new Vector2(0.39, 0.7),
-  rotationSpeed = 0.1,
-  rivers = 0.6,
-  colors?: Vector4[],
-  rotation = 0.0,
-): Mesh {
+export function createRiverLayer(options: RiverLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    rotationSpeed = 0.1,
+    rivers = 0.6,
+    colors,
+    rotation = 0.0,
+  } = options
   const colorPalette = colors
     ? colors
     : [

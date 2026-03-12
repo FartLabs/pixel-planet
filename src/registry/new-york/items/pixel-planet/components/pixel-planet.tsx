@@ -19,6 +19,7 @@ export interface PixelPlanetProps {
     | "no_atmosphere"
   seed: number
 
+  cameraZ?: number
   /**
    * advanced customization options for the planet.
    */
@@ -39,6 +40,16 @@ const mapTypeToLabel: Record<PixelPlanetProps["type"], string> = {
   dry: "Dry Planet",
   earth: "Earth Planet",
   no_atmosphere: "No atmosphere",
+}
+
+function CameraUpdater({ cameraZ }: { cameraZ: number }) {
+  useFrame(({ camera }) => {
+    if (camera.position.z !== cameraZ) {
+      camera.position.set(0, 0, cameraZ)
+      camera.lookAt(0, 0, 0)
+    }
+  })
+  return null
 }
 
 function PlanetContent({
@@ -106,9 +117,12 @@ export function PixelPlanet({
   const lastDragTimeRef = useRef<number>(0)
   const lastDragXRef = useRef<number>(0)
 
-  const orbitControlsEnabled = orbitControls ?? orbitControlsSensitivity !== undefined
+  const orbitControlsEnabled =
+    orbitControls ?? orbitControlsSensitivity !== undefined
   const sensitivity = orbitControlsSensitivity ?? -0.005 // Default sensitivity
   const friction = 0.95 // Friction coefficient (lower = more friction)
+
+  const cameraZ = props.cameraZ ?? props.advanced?.cameraDistance ?? 1.5
 
   // Apply velocity and friction when not dragging
   useEffect(() => {
@@ -207,7 +221,7 @@ export function PixelPlanet({
   return (
     <div ref={canvasRef} className={className} style={props.style}>
       <Canvas
-        camera={{ position: [0, 0, 1] }}
+        camera={{ position: [0, 0, cameraZ] }}
         style={{
           cursor: cursorStyle,
           touchAction: "none",
@@ -234,6 +248,8 @@ export function PixelPlanet({
         )}
 
         <PlanetContent {...props} rotationOffset={rotationOffset} />
+
+        <CameraUpdater cameraZ={cameraZ} />
 
         {/* <OrbitControls enablePan={false} /> */}
       </Canvas>

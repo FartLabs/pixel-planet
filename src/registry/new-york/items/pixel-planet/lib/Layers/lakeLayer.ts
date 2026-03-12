@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { LakeLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -114,13 +115,14 @@ const fragmentShaderLakes = (): string => {
     `
 }
 
-export function createLakeLayer(
-  lightPos = new Vector2(0.39, 0.7),
-  rotationSpeed = 0.1,
-  lakes = 0.6,
-  colors?: Vector4[],
-  rotation = 0.0,
-): Mesh {
+export function createLakeLayer(options: LakeLayerOptions = {}): Mesh {
+  const {
+    lightPos = new Vector2(0.39, 0.7),
+    rotationSpeed = 0.1,
+    waterLevel = 0.2,
+    colors = null,
+    rotation = 0.0,
+  } = options
   const colorPalette = colors
     ? colors
     : [
@@ -135,7 +137,7 @@ export function createLakeLayer(
       light_origin: { value: lightPos },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time_speed: { value: rotationSpeed },
-      lake_cutoff: { value: lakes },
+      lake_cutoff: { value: waterLevel },
       rotation: { value: rotation },
       color1: { value: colorPalette[0] },
       color2: { value: colorPalette[1] },

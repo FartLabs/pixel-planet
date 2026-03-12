@@ -12,8 +12,16 @@ export const createGasGiantRing = (options?: PlanetOptions): Group => {
 
   const rotationSpeed = options?.rotationSpeed
 
-  const ring = createRingLayer(lightPos, rotationSpeed)
-  const gasPlanet = createDenseGasPlanet(lightPos, rotationSpeed)
+  const ring = createRingLayer({
+    lightPos,
+    rotationSpeed,
+    rotation: options?.rotation,
+  })
+  const gasPlanet = createDenseGasPlanet({
+    lightPos,
+    rotationSpeed,
+    rotation: options?.rotation,
+  })
   ring.position.z = 0.01
   ring.scale.set(2.0, 2.0, 1.0)
   gasGiantGroup.add(gasPlanet)

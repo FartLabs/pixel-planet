@@ -1,5 +1,6 @@
 import { Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4 } from "three"
 import { flip } from "../utils"
+import type { CloudLayerOptions } from "./types"
 
 const vertexShader = (): string => {
   return `
@@ -152,14 +153,16 @@ const fragmentShaderClouds = (): string => {
     `
 }
 
-export function createCloudLayer(
-  colors?: Vector4[],
-  lightPos = new Vector2(0.39, 0.7),
-  rotationSpeed = 0.1,
-  rotation = 0.0,
-  cloudCover = 0.546,
-  stretch = 2.5,
-): Mesh {
+export function createCloudLayer(options: CloudLayerOptions = {}): Mesh {
+  const {
+    colors,
+    lightPos = new Vector2(0.39, 0.7),
+    rotationSpeed = 0.1,
+    rotation = 0.0,
+    cloudCover = 0.546,
+    stretch = 2.5,
+    manualOffset = 0.0,
+  } = options
   const colorPalette = colors
     ? colors
     : [
@@ -175,7 +178,7 @@ export function createCloudLayer(
       pixels: { value: 100.0 },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time_speed: { value: rotationSpeed },
-      manual_offset: { value: 0.0 },
+      manual_offset: { value: manualOffset },
       base_color: { value: colorPalette[0] },
       outline_color: { value: colorPalette[1] },
       shadow_base_color: { value: colorPalette[2] },
