@@ -219,17 +219,25 @@ export function PixelPlanet({
   }, [cursorStyle, orbitControlsEnabled])
 
   return (
-    <div ref={canvasRef} className={className} style={props.style}>
+    <div
+      ref={canvasRef}
+      className={className}
+      style={{
+        ...props.style,
+        touchAction: "none",
+        userSelect: "none",
+      }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerLeave={handlePointerUp}
+    >
       <Canvas
         camera={{ position: [0, 0, cameraZ] }}
         style={{
           cursor: cursorStyle,
           touchAction: "none",
         }}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
         {...props}
       >
         <ambientLight intensity={0.5} />
