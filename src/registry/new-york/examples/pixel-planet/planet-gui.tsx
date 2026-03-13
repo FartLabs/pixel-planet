@@ -114,7 +114,7 @@ export function PlanetGui({
         }),
       )
     motionFolder
-      .add(params, "sensitivity", -0.02, -0.001)
+      .add(params, "sensitivity", -0.1, -0.001)
       .name("Sensitivity")
       .onChange((val: number) =>
         onOptionsChangeRef.current({
