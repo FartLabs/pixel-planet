@@ -1,4 +1,4 @@
-import { lazy, Suspense, type ReactNode } from "react"
+import { lazy, type ReactNode, Suspense } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -21,8 +21,8 @@ import { SERVER_URL } from "@/data/env"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 import {
   ICON_LIBRARIES,
-  iconLibraryToLabel,
   type IconLibrary,
+  iconLibraryToLabel,
 } from "@/components/registry-helpers/icon-placeholder"
 
 export type Demo =

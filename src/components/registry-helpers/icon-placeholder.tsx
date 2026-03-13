@@ -10,20 +10,20 @@ import {
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
 import {
   CaretUpDownIcon,
-  CircleNotchIcon,
-  XIcon as XIconPhosphor,
   CheckIcon as CheckIconPhosphor,
-  EyeSlashIcon,
+  CircleNotchIcon,
   EyeIcon as EyeIconPhosphor,
+  EyeSlashIcon,
+  XIcon as XIconPhosphor,
 } from "@phosphor-icons/react"
 import {
+  type RemixiconComponentType,
   RiCheckLine,
   RiCloseLine,
   RiExpandUpDownLine,
   RiEyeLine,
   RiEyeOffLine,
   RiLoader4Line,
-  type RemixiconComponentType,
 } from "@remixicon/react"
 import {
   IconCheck,
