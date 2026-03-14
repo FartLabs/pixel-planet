@@ -122,7 +122,9 @@ export function PixelPlanet({
   const sensitivity = orbitControlsSensitivity ?? -0.005 // Default sensitivity
   const friction = 0.95 // Friction coefficient (lower = more friction)
 
-  const cameraZ = props.cameraZ ?? props.advanced?.cameraDistance ?? 1.5
+  const defaultCameraZ = props.type === "gas_giant_2" ? 1.5 : 1.0
+  const cameraZ =
+    props.cameraZ ?? props.advanced?.cameraDistance ?? defaultCameraZ
 
   // Apply velocity and friction when not dragging
   useEffect(() => {

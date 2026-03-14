@@ -135,7 +135,11 @@ export function PlanetGui({
     const cameraFolder = gui.addFolder("Camera")
     cameraFolder
       .add(
-        { distance: optionsRef.current.cameraDistance ?? 1.5 },
+        {
+          distance:
+            optionsRef.current.cameraDistance ??
+            (type === "gas_giant_2" ? 1.5 : 1.0),
+        },
         "distance",
         0.5,
         5,
