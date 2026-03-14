@@ -148,12 +148,10 @@ const fragmentShader = (): string => {
 export function createBaseGasPlanet(options: BaseGasLayerOptions = {}): Mesh {
   const {
     lightPos = new Vector2(0.39, 0.7),
-    cloudCover = 0.538,
     colors,
     stretch = 1.0,
     rotationSpeed = 0.1,
     rotation = 0.0,
-    cloudCurve = 1.3,
   } = options
   const colorPalette = colors
     ? colors
@@ -171,9 +169,9 @@ export function createBaseGasPlanet(options: BaseGasLayerOptions = {}): Mesh {
       outline_color: { value: colorPalette[1] },
       shadow_base_color: { value: colorPalette[2] },
       shadow_outline_color: { value: colorPalette[3] },
-      cloud_cover: { value: cloudCover },
+      cloud_cover: { value: 0.0 },
       stretch: { value: stretch },
-      cloud_curve: { value: cloudCurve },
+      cloud_curve: { value: 0.0 },
       time_speed: { value: rotationSpeed },
       rotation: { value: rotation },
       light_origin: { value: lightPos },

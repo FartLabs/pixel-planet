@@ -6,7 +6,6 @@ import {
   ShaderMaterial,
   TextureLoader,
   Vector2,
-  Vector4,
 } from "three"
 import { flip } from "../utils"
 
@@ -32,7 +31,6 @@ const fragmentShader = (): string => {
         float light_distance1 = 0.362;
         float light_distance2 = 0.525;
         uniform float time_speed;
-        float dither_size = 2.0;
         uniform sampler2D colors;
         float size = 10.0;
         int OCTAVES = 4;
@@ -138,25 +136,43 @@ const fragmentShader = (): string => {
 }
 
 import { type PlanetOptions } from "../utils"
-import { createBasePlanet } from "../Layers/basePlanet"
 
 export function createDryPlanet(options?: PlanetOptions): Group {
-  const lightPos = options?.lightPosition
-    ? new Vector2(options.lightPosition[0], options.lightPosition[1])
+  const {
+    lightPosition,
+    colors,
+    rotationSpeed = 0.1,
+    rotation = 0.0,
+  } = options ?? {}
+
+  const lightPos = lightPosition
+    ? new Vector2(lightPosition[0], lightPosition[1])
     : new Vector2(0.39, 0.7)
 
-  const colors = options?.colors?.base
-    ? options.colors.base.map((c: any) => new Vector4(c[0], c[1], c[2], c[3]))
-    : null
-  const rotation = options?.rotation ?? 0.0
-  const rotationSpeed = options?.rotationSpeed ?? 0.1
+  const colorSchemeTexture = new TextureLoader().load(
+    typeof colors === "string"
+      ? colors
+      : "/pixel-planet/colorScheme/colorScheme2.png",
+  )
+  colorSchemeTexture.magFilter = NearestFilter
+  colorSchemeTexture.minFilter = NearestFilter
 
-  const basePlanet = createBasePlanet({
-    lightPos,
-    colors,
-    rotation,
-    rotationSpeed,
+  const planetGeometry = new PlaneGeometry(1, 1)
+  const planetMaterial = new ShaderMaterial({
+    uniforms: {
+      pixels: { value: 100.0 },
+      colors: { value: colorSchemeTexture },
+      light_origin: { value: lightPos },
+      time_speed: { value: rotationSpeed },
+      rotation: { value: rotation },
+      seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
+      time: { value: 0.0 },
+    },
+    vertexShader: vertexShader(),
+    fragmentShader: fragmentShader(),
+    transparent: true,
   })
 
+  const basePlanet = new Mesh(planetGeometry, planetMaterial)
   return new Group().add(basePlanet)
 }

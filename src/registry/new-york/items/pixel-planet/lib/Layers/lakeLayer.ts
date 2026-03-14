@@ -119,7 +119,7 @@ export function createLakeLayer(options: LakeLayerOptions = {}): Mesh {
   const {
     lightPos = new Vector2(0.39, 0.7),
     rotationSpeed = 0.1,
-    waterLevel = 0.2,
+    waterLevel = 0.6,
     colors = null,
     rotation = 0.0,
   } = options

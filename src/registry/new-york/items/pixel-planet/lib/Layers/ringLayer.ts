@@ -149,7 +149,6 @@ export function createRingLayer(options: RingLayerOptions = {}): Mesh {
     ringWidth = 0.143,
     perspective = 6.0,
     scalePlanet = 4.0,
-    rotation = 0.0,
   } = options
   const colorSchemeTexture1 = new TextureLoader().load(
     "/pixel-planet/colorScheme/colorScheme1.png",
@@ -174,7 +173,7 @@ export function createRingLayer(options: RingLayerOptions = {}): Mesh {
       pixels: { value: 250.0 },
       light_origin: { value: lightPos },
       time_speed: { value: rotationSpeed },
-      rotation: { value: rotation },
+      rotation: { value: Math.random() },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
     },

@@ -168,7 +168,6 @@ export function createStarFlareLayer(
     stormWidth = 0.2,
     stormDitherWidth = 0.07,
     color = null,
-    rotation = 0.0,
   } = options
   const palette = color
     ? `/pixel-planet/colorScheme/starPalette/${color}Palette.png`
@@ -183,7 +182,7 @@ export function createStarFlareLayer(
       pixels: { value: 200.0 },
       colorramp: { value: colorSchemeTexture },
       time_speed: { value: rotationSpeed },
-      rotation: { value: rotation },
+      rotation: { value: options.rotation ?? Math.random() },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
       storm_width: { value: stormWidth },

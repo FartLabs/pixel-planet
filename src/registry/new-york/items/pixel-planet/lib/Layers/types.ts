@@ -26,9 +26,8 @@ export interface BasePlanetLayerOptions extends LayerOptions {
   manualOffset?: number
 }
 
-export interface DenseGasLayerOptions extends LayerOptions {
-  // Add specific options if needed, currently uses defaults from LayerOptions
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface DenseGasLayerOptions extends LayerOptions {}
 
 export interface CloudLayerOptions extends LayerOptions {
   colors?: Vector4[]

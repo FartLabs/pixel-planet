@@ -125,7 +125,7 @@ const fragmentShader = (): string => {
 }
 
 export function createStarBlobLayer(options: StarBlobLayerOptions = {}): Mesh {
-  const { rotationSpeed = 0.1, blobColor = null, rotation = 0.0 } = options
+  const { rotationSpeed = 0.1, blobColor = null } = options
   const color = blobColor
     ? blobColor
     : new Vector4(255 / 255, 165 / 255, 0 / 255, 1)
@@ -136,7 +136,7 @@ export function createStarBlobLayer(options: StarBlobLayerOptions = {}): Mesh {
       pixels: { value: 200.0 },
       color: { value: color },
       time_speed: { value: rotationSpeed },
-      rotation: { value: rotation },
+      rotation: { value: options.rotation ?? Math.random() },
       seed: { value: flip() ? Math.random() * 10 : Math.random() * 100 },
       time: { value: 0.0 },
       circle_amount: { value: 3.0 },

@@ -112,14 +112,12 @@ export function createCraterLayer(options: CraterLayerOptions = {}): Mesh {
   const colorPalette = colors
     ? colors
     : [
-        new Vector4(155 / 255, 158 / 255, 184 / 255, 1),
         new Vector4(71 / 255, 97 / 255, 124 / 255, 1),
         new Vector4(53 / 255, 57 / 255, 85 / 255, 1),
       ]
   const craterGeometry = new PlaneGeometry(1, 1)
   const craterMaterial = new ShaderMaterial({
     uniforms: {
-      pixels: { value: 100.0 },
       color1: { value: colorPalette[0] },
       color2: { value: colorPalette[1] },
       light_origin: { value: lightPos },
