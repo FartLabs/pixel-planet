@@ -229,8 +229,9 @@
 
   @media (min-width: 72rem) {
     .header .header-content {
-      padding-left: calc(var(--sl-sidebar-width) + var(--sl-content-pad-x))
-        !important;
+      padding-left: calc(
+        var(--sl-sidebar-width) + var(--sl-content-pad-x)
+      ) !important;
     }
   }
 
@@ -266,8 +267,7 @@
 
   .social-links a,
   sl-theme-select button {
-    @apply !inline-flex !items-center !justify-center !p-0 !transition-all
-      !duration-200;
+    @apply !inline-flex !items-center !justify-center !p-0 !transition-all !duration-200;
     width: 36px !important;
     height: 36px !important;
     min-width: 36px !important;
@@ -333,8 +333,7 @@
   }
 
   .nav-bar a {
-    @apply !flex !h-full !items-center !justify-center !px-4 !transition-colors
-      !duration-200;
+    @apply !flex !h-full !items-center !justify-center !px-4 !transition-colors !duration-200;
     margin: 0 !important;
     color: var(--foreground) !important;
     text-decoration: none !important;
