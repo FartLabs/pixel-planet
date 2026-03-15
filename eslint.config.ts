@@ -17,6 +17,7 @@ export default tseslint.config(
       "**/public/r/**",
       "**/.github/**",
       "**/.vscode/**",
+      "**/pixel-planet-prior-art/**",
     ],
   },
   js.configs.recommended,
