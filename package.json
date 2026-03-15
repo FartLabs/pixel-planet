@@ -10,7 +10,8 @@
     "astro": "astro",
     "registry:build": "shadcn build",
     "lint": "eslint --fix .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "precommit": "npm run format && npm run build"
   },
   "lint-staged": {
     "**/*": [
