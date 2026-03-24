@@ -13,6 +13,7 @@ export default tseslint.config(
       "**/node_modules/**",
       "**/.astro/**",
       "**/.next/**",
+      "**/.vercel/**",
       "**/dist/**",
       "**/public/r/**",
       "**/.github/**",
