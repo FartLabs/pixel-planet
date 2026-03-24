@@ -8,11 +8,19 @@ A collection of accessible components built for use with Shadcn.
 
 Visit <https://pixel-planet.fartlabs.org/> to view the documentation.
 
+### Quickstart
+
+Add Pixel Planet components to your project via the shadcn CLI:
+
+```bash
+npx shadcn@latest add https://pixel-planet.fartlabs.org
+```
+
 ## Contributing
 
 Please read the [contributing guide](/CONTRIBUTING.md).
 
-To start the documentation development server locally, run:
+To start the [Starlight](https://starlight.astro.build/) documentation development server locally, run:
 
 ```bash
 npm run dev

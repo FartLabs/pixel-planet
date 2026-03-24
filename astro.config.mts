@@ -16,6 +16,7 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  output: "server",
   site: "https://pixel-planet.fartlabs.org",
   base: "/",
   env: {
