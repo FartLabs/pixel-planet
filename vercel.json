@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(?i).*application/json.*"
+        }
+      ],
+      "destination": "/r/registry.json"
+    }
+  ]
+}
