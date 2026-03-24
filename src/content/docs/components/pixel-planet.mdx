@@ -5,6 +5,8 @@ description: Add interactive 3D pixel art planets to your application using Pixe
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import CodePreview from "@/components/markdown/code-preview/code-preview.astro"
+import CliCommandCode from "@/components/markdown/cli-command-code/cli-command-code.astro"
+import { SERVER_URL } from "@/data/env"
 
 `PixelPlanet` is a React Three Fiber component that renders customizable, interactive 3D pixel art planets. You can control the planet type, surface colors, rotation speed, and atmospheric effects.
 
@@ -16,11 +18,9 @@ The most reliable way to install a component from a custom third-party registry 
 
 Run the following command in your terminal:
 
-```bash
-npx shadcn@latest add https://pixel-planet.fartlabs.org/r/pixel-planet.json
-```
+<CliCommandCode action="run" command={`shadcn@latest add ${SERVER_URL}`} />
 
-_This commands the CLI to fetch the component's code and dependencies directly from the repository's build output folder (\`/r\`)._
+_This commands the CLI to fetch the component's code and dependencies directly from our registry root endpoint._
 
 ### Usage
 
