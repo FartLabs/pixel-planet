@@ -401,9 +401,10 @@
   /* Make tables scrollable on small screens or when they exceed container width */
   .sl-markdown-content table {
     display: block;
-    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
   }
 }
 
