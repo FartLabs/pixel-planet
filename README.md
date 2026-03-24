@@ -18,8 +18,6 @@ npx shadcn@latest add https://pixel-planet.fartlabs.org
 
 ## Contributing
 
-Please read the [contributing guide](/CONTRIBUTING.md).
-
 To start the [Starlight](https://starlight.astro.build/) documentation development server locally, run:
 
 ```bash
@@ -29,10 +27,12 @@ npm run dev
 Before you commit, please ensure your code is properly formatted, linted, and the shadcn registry is built:
 
 ```bash
+npm run registry:build
 npm run format
 npm run lint
-npm run registry:build
 ```
+
+Please read the [contributing guide](/CONTRIBUTING.md).
 
 ## Acknowledgements
 
