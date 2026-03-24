@@ -13,7 +13,7 @@ Visit <https://pixel-planet.fartlabs.org/> to view the documentation.
 Add Pixel Planet components to your project via the shadcn CLI:
 
 ```bash
-npx shadcn@latest add https://pixel-planet.fartlabs.org
+npx shadcn@latest add https://pixel-planet.fartlabs.org/r/pixel-planet.json
 ```
 
 ## Contributing

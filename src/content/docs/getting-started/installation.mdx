@@ -25,6 +25,9 @@ The most reliable way to install a component from a custom third-party registry 
 
 Run the following command in your terminal:
 
-<CliCommandCode action="run" command={`shadcn@latest add ${SERVER_URL}`} />
+<CliCommandCode
+  action="run"
+  command={`shadcn@latest add ${SERVER_URL}/r/registry.json`}
+/>
 
-_This commands the CLI to fetch the component's code and dependencies directly from our registry root endpoint._
+_This commands the CLI to fetch the component definitions from the registry JSON endpoint._

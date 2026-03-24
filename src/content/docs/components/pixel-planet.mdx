@@ -16,11 +16,12 @@ import { SERVER_URL } from "@/data/env"
 
 The most reliable way to install a component from a custom third-party registry without modifying your project configuration is to use the absolute URL to the component's generated JSON definition.
 
-Run the following command in your terminal:
+<CliCommandCode
+  action="run"
+  command={`shadcn@latest add ${SERVER_URL}/r/pixel-planet.json`}
+/>
 
-<CliCommandCode action="run" command={`shadcn@latest add ${SERVER_URL}`} />
-
-_This commands the CLI to fetch the component's code and dependencies directly from our registry root endpoint._
+_This commands the CLI to fetch the component's code and dependencies directly from its JSON definition._
 
 ### Usage
 
