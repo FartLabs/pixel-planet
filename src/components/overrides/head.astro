@@ -51,3 +51,18 @@ const finalHead = sortedHead.concat([
     <Tag {...attrs} set:html={content} />
   ))
 }
+
+<!-- Google tag (gtag.js) -->
+<script
+  is:inline
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-6SCRW9E616"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    dataLayer.push(arguments)
+  }
+  gtag("js", new Date())
+
+  gtag("config", "G-6SCRW9E616")
+</script>

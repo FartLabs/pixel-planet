@@ -36,7 +36,7 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 
 ## Acknowledgements
 
-This project is built from the original source code and inspiration of [PixelPlanets](https://github.com/Timur310/PixelPlanets) by the original artist [**@Timur310**](https://github.com/Timur310).
+This project is built from the original source code and inspiration of [PixelPlanets](https://github.com/Timur310/PixelPlanets) by the original artist, [**@Timur310**](https://github.com/Timur310).
 
 This project is also based on the [shadcn registry template](https://github.com/WebDevSimplified/wds-shadcn-registry).
 

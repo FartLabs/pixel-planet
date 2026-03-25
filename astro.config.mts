@@ -24,6 +24,11 @@ export default defineConfig({
         context: "client",
         access: "public",
       }),
+      GA_MEASUREMENT_ID: envField.string({
+        context: "client",
+        access: "public",
+        default: "G-6SCRW9E616",
+      }),
     },
   },
   integrations: [
