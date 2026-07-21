@@ -17,6 +17,8 @@ export interface PixelPlanetProps {
     | "dry"
     | "earth"
     | "no_atmosphere"
+    | "galaxy"
+    | "blackhole"
   seed: number
 
   cameraZ?: number
@@ -40,6 +42,8 @@ const mapTypeToLabel: Record<PixelPlanetProps["type"], string> = {
   dry: "Dry Planet",
   earth: "Earth Planet",
   no_atmosphere: "No atmosphere",
+  galaxy: "Galaxy",
+  blackhole: "Blackhole",
 }
 
 function CameraUpdater({ cameraZ }: { cameraZ: number }) {
@@ -122,7 +126,12 @@ export function PixelPlanet({
   const sensitivity = orbitControlsSensitivity ?? -0.005 // Default sensitivity
   const friction = 0.95 // Friction coefficient (lower = more friction)
 
-  const defaultCameraZ = props.type === "gas_giant_2" ? 1.5 : 1.0
+  const defaultCameraZ =
+    props.type === "gas_giant_2"
+      ? 1.5
+      : props.type === "galaxy" || props.type === "blackhole"
+        ? 1.3
+        : 1.0
   const cameraZ =
     props.cameraZ ?? props.advanced?.cameraDistance ?? defaultCameraZ
 

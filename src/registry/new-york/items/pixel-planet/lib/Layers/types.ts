@@ -79,3 +79,21 @@ export interface StarLayerOptions extends LayerOptions {
   lightIntensity?: number
   color?: string | null
 }
+
+export type GalaxyType = "spiral" | "elliptical" | "irregular"
+
+export interface GalaxyLayerOptions extends LayerOptions {
+  galaxyType?: GalaxyType
+  colors?: Vector4[] | null
+}
+
+export interface BlackholeLayerOptions extends LayerOptions {
+  horizonSize?: number
+}
+
+export interface AccretionDiskLayerOptions extends LayerOptions {
+  colors?: Vector4[] | null
+  intensity?: number
+  horizonSize?: number
+  half?: "front" | "back"
+}

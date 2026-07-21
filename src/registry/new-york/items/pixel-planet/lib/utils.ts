@@ -1,6 +1,8 @@
 import { createAsteroid } from "./Planets/asteroid"
+import { createBlackhole } from "./Planets/blackhole"
 import { createDryPlanet } from "./Planets/dryPlanet"
 import { createEarthPlanet } from "./Planets/earthPlanet"
+import { createGalaxy } from "./Planets/galaxy"
 import { createGasGiant } from "./Planets/gasGiant"
 import { createGasGiantRing } from "./Planets/gasGiantRing"
 import { createIcePlanet } from "./Planets/icePlanet"
@@ -38,6 +40,9 @@ export interface PlanetOptions {
   cameraDistance?: number // for manual zoom control
   orbitControls?: boolean // Enable drag-to-rotate interaction
   orbitControlsSensitivity?: number // Custom sensitivity for drag-to-rotate
+  galaxyType?: "spiral" | "elliptical" | "irregular" // for galaxy
+  horizonSize?: number // for blackhole event horizon
+  diskIntensity?: number // for blackhole accretion disk
   colors?: {
     base?: [number, number, number, number][]
     craters?: [number, number, number, number][]
@@ -69,5 +74,9 @@ export function generatePlanetByType(
       return createDryPlanet(options)
     case "Earth Planet":
       return createEarthPlanet(options)
+    case "Galaxy":
+      return createGalaxy(options)
+    case "Blackhole":
+      return createBlackhole(options)
   }
 }

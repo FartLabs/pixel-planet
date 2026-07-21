@@ -59,6 +59,9 @@ export function PlanetGui({
       pixelSize: optionsRef.current.pixelSize ?? 1.0,
       cloudCover: optionsRef.current.cloudCover ?? 0.5,
       waterLevel: optionsRef.current.waterLevel ?? 0.5,
+      galaxyType: optionsRef.current.galaxyType ?? "spiral",
+      horizonSize: optionsRef.current.horizonSize ?? 0.2,
+      diskIntensity: optionsRef.current.diskIntensity ?? 1.0,
       // Color proxies (RGB only for lil-gui simpler interface)
       baseColor: optionsRef.current.colors?.base?.[0]
         ? optionsRef.current.colors.base[0].slice(0, 3)
@@ -138,7 +141,11 @@ export function PlanetGui({
         {
           distance:
             optionsRef.current.cameraDistance ??
-            (type === "gas_giant_2" ? 1.5 : 1.0),
+            (type === "gas_giant_2"
+              ? 1.5
+              : type === "galaxy" || type === "blackhole"
+                ? 1.3
+                : 1.0),
         },
         "distance",
         0.5,
@@ -185,6 +192,39 @@ export function PlanetGui({
           onOptionsChangeRef.current({
             ...optionsRef.current,
             waterLevel: val,
+          }),
+        )
+    }
+
+    if (type === "galaxy") {
+      appearanceFolder
+        .add(params, "galaxyType", ["spiral", "elliptical", "irregular"])
+        .name("Galaxy Type")
+        .onChange((val: "spiral" | "elliptical" | "irregular") =>
+          onOptionsChangeRef.current({
+            ...optionsRef.current,
+            galaxyType: val,
+          }),
+        )
+    }
+
+    if (type === "blackhole") {
+      appearanceFolder
+        .add(params, "horizonSize", 0.1, 0.3)
+        .name("Horizon Size")
+        .onChange((val: number) =>
+          onOptionsChangeRef.current({
+            ...optionsRef.current,
+            horizonSize: val,
+          }),
+        )
+      appearanceFolder
+        .add(params, "diskIntensity", 0.2, 3)
+        .name("Disk Intensity")
+        .onChange((val: number) =>
+          onOptionsChangeRef.current({
+            ...optionsRef.current,
+            diskIntensity: val,
           }),
         )
     }
