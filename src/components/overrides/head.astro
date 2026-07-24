@@ -43,6 +43,17 @@ const finalHead = sortedHead.concat([
       content: ogImageUrl,
     },
   },
+  ...(import.meta.env.PROD
+    ? [
+        {
+          tag: "meta",
+          attrs: {
+            name: "vercel-toolbar",
+            content: "off",
+          },
+        },
+      ]
+    : []),
 ])
 ---
 
