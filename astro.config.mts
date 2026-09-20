@@ -12,6 +12,9 @@ const GITHUB_REPO_URL =
 export default defineConfig({
   site: "https://pixel-planet.fartlabs.org",
   base: "/",
+  redirects: {
+    "/components": "/components/pixel-planet",
+  },
   env: {
     schema: {
       GITHUB_REPO_URL: envField.string({ context: "client", access: "public" }),
@@ -109,7 +112,7 @@ export default defineConfig({
             },
             {
               label: "Components",
-              link: "/components",
+              link: "/components/pixel-planet",
             },
             {
               label: "Contributing",
