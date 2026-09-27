@@ -28,7 +28,9 @@ import {
 export type Demo =
   | "pixel-planet/asteroid"
   | "pixel-planet/basic"
+  | "pixel-planet/blackhole"
   | "pixel-planet/dry"
+  | "pixel-planet/galaxy"
   | "pixel-planet/gas-giant-1"
   | "pixel-planet/gas-giant-2"
   | "pixel-planet/ice"

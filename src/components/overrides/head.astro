@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets"
+
 const { head } = Astro.locals.starlightRoute
 
 // By default, Astro renders the default favicon before the media specific favicons which results in the media specific favicons not being used.
@@ -43,6 +45,17 @@ const finalHead = sortedHead.concat([
       content: ogImageUrl,
     },
   },
+  ...(import.meta.env.PROD
+    ? [
+        {
+          tag: "meta" as const,
+          attrs: {
+            name: "vercel-toolbar",
+            content: "off",
+          },
+        },
+      ]
+    : []),
 ])
 ---
 
@@ -51,6 +64,8 @@ const finalHead = sortedHead.concat([
     <Tag {...attrs} set:html={content} />
   ))
 }
+<Font cssVariable="--font-geist" preload />
+<Font cssVariable="--font-geist-mono" preload />
 
 <!-- Google tag (gtag.js) -->
 <script

@@ -36,6 +36,7 @@ export default defineConfig({
   },
   integrations: [
     starlight({
+      favicon: "/favicon.png",
       components: {
         Head: "./src/components/overrides/head.astro",
         Footer: "./src/components/overrides/footer.astro",
@@ -48,15 +49,6 @@ export default defineConfig({
             rel: "stylesheet",
             type: "text/css",
             href: "https://css.fart.tools",
-          },
-        },
-        // Add PNG favicon
-        {
-          tag: "link",
-          attrs: {
-            rel: "icon",
-            href: "/favicon.png",
-            type: "image/png",
           },
         },
       ],
@@ -126,10 +118,15 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        "@tabler/icons-react": "@tabler/icons-react/dist/esm/tabler-icons-react.mjs",
+      },
+    },
     ssr: {
       // FIXME: Once starlight supports Zod 4 we can probably remove this.
       // Zod should normally be imported from astro, but I want my code to use its own zod version to reflect the version used in the shadcn components.
-      noExternal: ["zod"],
+      noExternal: ["zod", "@tabler/icons-react"],
     },
   },
 })

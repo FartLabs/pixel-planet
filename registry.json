@@ -35,11 +35,19 @@
           "type": "registry:lib"
         },
         {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/blackhole.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "src/registry/new-york/items/pixel-planet/lib/Planets/dryPlanet.ts",
           "type": "registry:lib"
         },
         {
           "path": "src/registry/new-york/items/pixel-planet/lib/Planets/earthPlanet.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Planets/galaxy.ts",
           "type": "registry:lib"
         },
         {
@@ -67,6 +75,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/accretionDiskLayer.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "src/registry/new-york/items/pixel-planet/lib/Layers/atmosphereLayer.ts",
           "type": "registry:lib"
         },
@@ -83,6 +95,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/blackholeLayer.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "src/registry/new-york/items/pixel-planet/lib/Layers/cloudLayer.ts",
           "type": "registry:lib"
         },
@@ -92,6 +108,10 @@
         },
         {
           "path": "src/registry/new-york/items/pixel-planet/lib/Layers/denseGasLayer.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/new-york/items/pixel-planet/lib/Layers/galaxyLayer.ts",
           "type": "registry:lib"
         },
         {
